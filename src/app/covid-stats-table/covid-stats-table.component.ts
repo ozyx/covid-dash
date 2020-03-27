@@ -3,13 +3,14 @@ import { CovidStats } from '../covid-stats';
 import { CovidStatsService } from '../covid-stats.service'
 
 @Component({
-  selector: 'app-covid-stats-list',
-  templateUrl: './covid-stats-list.component.html',
-  styleUrls: ['./covid-stats-list.component.css']
+  selector: 'app-covid-stats-table',
+  templateUrl: './covid-stats-table.component.html',
+  styleUrls: ['./covid-stats-table.component.css']
 })
-export class CovidStatsListComponent implements OnInit {
+export class CovidStatsTableComponent implements OnInit {
 
   covidStatsList: CovidStats[] = [];
+  displayedColumns: string[] = ['location', 'confirmed', 'deaths', 'recovered', 'active'];
 
   constructor(private covidStatsService: CovidStatsService) { }
 
