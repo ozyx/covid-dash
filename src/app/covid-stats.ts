@@ -9,8 +9,19 @@ interface ICovidStats {
   critical: number;
 }
 
+class CountryInfo {
+  // tslint:disable-next-line: variable-name
+  _id: number;
+  lat: number;
+  long: number;
+  flag: string;
+  iso3: string;
+  iso2: string;
+}
+
 export class CovidStats implements ICovidStats {
   country: string;
+  countryInfo: CountryInfo;
   cases: number;
   todayCases: number;
   deaths: number;
