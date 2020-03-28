@@ -10,12 +10,12 @@ import { CovidStatsService } from '../covid-stats.service'
 export class CovidStatsTableComponent implements OnInit {
 
   covidStatsList: CovidStats[] = [];
-  displayedColumns: string[] = ['location', 'confirmed', 'deaths', 'recovered', 'active'];
+  displayedColumns: string[] = ['country', 'cases', 'deaths', 'recovered', 'active'];
 
   constructor(private covidStatsService: CovidStatsService) { }
 
   ngOnInit(): void {
-    this.covidStatsService.getStats().subscribe(covidStatsResponse => this.covidStatsList = covidStatsResponse.data);
+    this.covidStatsService.getStats().subscribe(covidStatsList => this.covidStatsList = covidStatsList);
   }
 
 }

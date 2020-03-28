@@ -1,27 +1,33 @@
 interface ICovidStats {
-    location: string;
-    confirmed: number;
-    deaths: number;
-    recovered: number;
-    active: number;
+  country: string;
+  cases: number;
+  todayCases: number;
+  deaths: number;
+  todayDeaths: number;
+  recovered: number;
+  active: number;
+  critical: number;
 }
 
 export class CovidStats implements ICovidStats {
-    location: string;
-    confirmed: number;
-    deaths: number;
-    recovered: number;
-    active: number;
+  country: string;
+  cases: number;
+  todayCases: number;
+  deaths: number;
+  todayDeaths: number;
+  recovered: number;
+  active: number;
+  critical: number;
 
-    constructor(location: string, confirmed: number, deaths: number, recovered: number, active: number) {
-        this.location = location;
-        this.confirmed = confirmed;
-        this.deaths = deaths;
-        this.recovered = recovered;
-        this.active = active;
-    }
-}
-
-export class CovidStatsResponse {
-    data: CovidStats[];
+  constructor(country: string, cases: number, todayCases: number,
+              deaths: number, todayDeaths: number, recovered: number, active: number, critical: number) {
+    this.country = country;
+    this.cases = cases;
+    this.todayCases = todayCases;
+    this.deaths = deaths;
+    this.todayDeaths = todayDeaths;
+    this.recovered = recovered;
+    this.active = active;
+    this.critical = critical;
+  }
 }

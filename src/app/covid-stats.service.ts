@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { CovidStats, CovidStatsResponse } from "./covid-stats";
+import { CovidStats } from "./covid-stats";
 import { Observable } from 'rxjs';
 import { catchError, map, tap } from 'rxjs/operators';
 
@@ -9,7 +9,7 @@ import { catchError, map, tap } from 'rxjs/operators';
 })
 export class CovidStatsService {
 
-  private covidBaseUrl = "https://covid2019-api.herokuapp.com/v2";
+  private covidBaseUrl = "https://corona.lmao.ninja";
 
   private httpOptions = {
     headers: new HttpHeaders({ 'Accept': 'application/json' })
@@ -17,8 +17,8 @@ export class CovidStatsService {
 
   constructor(private http: HttpClient) { }
 
-  getStats(): Observable<CovidStatsResponse> {
-    return this.http.get<CovidStatsResponse>(`${this.covidBaseUrl}/current`, this.httpOptions).pipe(
+  getStats(): Observable<CovidStats[]> {
+    return this.http.get<CovidStats[]>(`${this.covidBaseUrl}/countries`, this.httpOptions).pipe(
       tap(_ => console.log("fetch stats")));
   }
 }
