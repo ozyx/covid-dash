@@ -10,7 +10,7 @@ import { CovidStatsService } from '../covid-stats.service'
 export class CovidStatsTableComponent implements OnInit {
 
   covidStatsList: CovidStats[] = [];
-  displayedColumns: string[] = ['country', 'cases', 'deaths', 'recovered', 'active'];
+  displayedColumns: string[] = ['country', 'cases', 'todayCases', 'deaths', 'todayDeaths', 'recovered', 'active'];
 
   constructor(private covidStatsService: CovidStatsService) { }
 
