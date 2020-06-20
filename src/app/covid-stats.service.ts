@@ -9,7 +9,7 @@ import { catchError, map, tap } from 'rxjs/operators';
 })
 export class CovidStatsService {
 
-  private covidBaseUrl = "https://corona.lmao.ninja";
+  private covidBaseUrl = "https://disease.sh";
 
   private httpOptions = {
     headers: new HttpHeaders({ 'Accept': 'application/json' })
@@ -18,7 +18,7 @@ export class CovidStatsService {
   constructor(private http: HttpClient) { }
 
   getStats(): Observable<CovidStats[]> {
-    return this.http.get<CovidStats[]>(`${this.covidBaseUrl}/countries`, this.httpOptions).pipe(
+    return this.http.get<CovidStats[]>(`${this.covidBaseUrl}/v2/countries`, this.httpOptions).pipe(
       tap(_ => console.log("fetch stats")));
   }
 }
