@@ -9,6 +9,10 @@ const routes: Routes = [
     component: CovidStatsTableComponent,
   },
   {
+    path: 'chart',
+    redirectTo: ''
+  },
+  {
     path: 'chart/:country',
     component: CovidStatsChartComponent,
   },
