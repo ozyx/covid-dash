@@ -19,7 +19,7 @@ export class CovidStatsService {
   getAllCountriesStats(): Observable<CovidStats[]> {
     return this.http
       .get<CovidStats[]>(`${this.covidBaseUrl}/v2/countries`, this.httpOptions)
-      .pipe(tap((_) => console.log('fetch stats')));
+      .pipe(tap((_) => console.log('fetch stats'))); // TODO: use logger, error handling
   }
 
   getHistoricalStatsByCountry(country: string): Observable<CountryHistory> {
@@ -28,6 +28,6 @@ export class CovidStatsService {
         `${this.covidBaseUrl}/v2/historical/${country}?lastdays=90`,
         this.httpOptions
       )
-      .pipe(tap((_) => console.log('get stats by country')));
+      .pipe(tap((_) => console.log('get stats by country'))); // TODO: use logger, error handling
   }
 }
