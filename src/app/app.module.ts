@@ -9,16 +9,20 @@ import { CovidStatsTableComponent } from './covid-stats-table/covid-stats-table.
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatTableModule } from '@angular/material/table';
 import { MatSortModule } from '@angular/material/sort';
+import { CovidStatsChartComponent } from './covid-stats-chart/covid-stats-chart.component';
+import { HighchartsChartModule } from 'highcharts-angular';
 
 @NgModule({
   declarations: [
     AppComponent,
-    CovidStatsTableComponent
+    CovidStatsTableComponent,
+    CovidStatsChartComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
+    HighchartsChartModule,
     BrowserAnimationsModule,
     MatTableModule,
     MatSortModule
