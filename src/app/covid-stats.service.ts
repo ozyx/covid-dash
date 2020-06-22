@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { CovidStats, CountryHistory } from './covid-stats';
-import { Observable } from 'rxjs';
+import { Observable, of } from 'rxjs';
 import { catchError, map, tap } from 'rxjs/operators';
 
 @Injectable({
@@ -10,6 +10,9 @@ import { catchError, map, tap } from 'rxjs/operators';
 export class CovidStatsService {
   private covidBaseUrl = 'https://disease.sh';
 
+  private cache = {};
+  private all = 'allStats';
+
   private httpOptions = {
     headers: new HttpHeaders({ Accept: 'application/json' }),
   };
@@ -17,17 +20,25 @@ export class CovidStatsService {
   constructor(private http: HttpClient) {}
 
   getAllCountriesStats(): Observable<CovidStats[]> {
+    if (this.cache[this.all]) {
+      return of(this.cache[this.all]);
+    }
+
     return this.http
       .get<CovidStats[]>(`${this.covidBaseUrl}/v2/countries`, this.httpOptions)
-      .pipe(tap((_) => console.log('fetch stats'))); // TODO: use logger, error handling
+      .pipe(tap((resolvedValue) => (this.cache[this.all] = resolvedValue))); // TODO: use logger, error handling
   }
 
   getHistoricalStatsByCountry(country: string): Observable<CountryHistory> {
+    if (this.cache[country]) {
+      return of(this.cache[country]);
+    }
+
     return this.http
       .get<CountryHistory>(
-        `${this.covidBaseUrl}/v2/historical/${country}?lastdays=90`,
+        `${this.covidBaseUrl}/v2/historical/${country}?lastdays=all`,
         this.httpOptions
       )
-      .pipe(tap((_) => console.log('get stats by country'))); // TODO: use logger, error handling
+      .pipe(tap((resolvedValue) => (this.cache[country] = resolvedValue))); // TODO: use logger, error handling
   }
 }
