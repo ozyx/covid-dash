@@ -60,17 +60,26 @@ export class CovidStatsChartComponent implements OnInit {
       {
         name: 'Cases',
         data: casesSeries,
-        type: 'line',
+        type: 'spline',
+        marker: {
+          radius: 3
+        }
       },
       {
         name: 'Deaths',
         data: deathsSeries,
-        type: 'line',
+        type: 'spline',
+        marker: {
+          radius: 3
+        }
       },
       {
         name: 'Recovered',
         data: recoveredSeries,
-        type: 'line',
+        type: 'spline',
+        marker: {
+          radius: 3
+        }
       },
     ];
     this.updateFlag = true;
