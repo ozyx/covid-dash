@@ -8,6 +8,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { CovidStatsTableComponent } from './covid-stats-table/covid-stats-table.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatTableModule } from '@angular/material/table';
+import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatSortModule } from '@angular/material/sort';
 import { CovidStatsChartComponent } from './covid-stats-chart/covid-stats-chart.component';
 import { HighchartsChartModule } from 'highcharts-angular';
@@ -16,7 +17,7 @@ import { HighchartsChartModule } from 'highcharts-angular';
   declarations: [
     AppComponent,
     CovidStatsTableComponent,
-    CovidStatsChartComponent
+    CovidStatsChartComponent,
   ],
   imports: [
     BrowserModule,
@@ -25,10 +26,10 @@ import { HighchartsChartModule } from 'highcharts-angular';
     HighchartsChartModule,
     BrowserAnimationsModule,
     MatTableModule,
-    MatSortModule
-
+    MatToolbarModule,
+    MatSortModule,
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
