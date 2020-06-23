@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import * as Highcharts from 'highcharts';
-import { CovidStatsService } from '../covid-stats.service';
+import { CovidStatsService } from '../../covid-stats.service';
 import { ActivatedRoute } from '@angular/router';
 
 @Component({
@@ -44,6 +44,9 @@ export class CovidStatsChartComponent implements OnInit {
           countryHistory.timeline.deaths,
           countryHistory.timeline.recovered
         );
+      }, (err) => {
+        this.chartOptions.title = { text: `${err}: ${country}`};
+        this.updateFlag = true;
       });
   }
 
